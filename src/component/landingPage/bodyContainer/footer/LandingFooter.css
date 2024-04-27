@@ -1,0 +1,20 @@
+#footerContainer{
+    padding: 2%; 
+}
+#footerContainer {
+    padding: 2%;
+    width: 100%;
+    background-color: #f8f9fa; /* Change this to your desired background color */
+  }
+  
+  .landing-footer {
+    /* You can add any specific styling for the footer container here */
+  }
+  
+  
+
+@media (max-width: 992px) {
+    #footerContainer{
+        padding: 20px; 
+    }
+}

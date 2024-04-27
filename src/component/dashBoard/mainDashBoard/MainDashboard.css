@@ -1,0 +1,26 @@
+#dashboard {
+    display: flex;
+    height: calc(100vh - 20px); /* 100vh - 20px for padding */
+    width: calc(100vw - 20px); /* 100vw - 20px for padding */
+    padding: 10px;
+    box-sizing: content-box;  /* thsi is used to override bootstrap's default styling for the navbar */
+  }
+
+  .darkMode-MainDashBoardbackground{
+    background-color: #121212;
+  }
+
+  @media (max-width:992px) {
+  #dashboard {
+    position: relative;
+    display: flex;
+    height: 92vh; /* 100vh - 20px for padding */
+    width:100vw ; /* 100vw - 20px for padding */
+    padding: 0px;
+    box-sizing: content-box;  /* thsi is used to override bootstrap's default styling for the navbar */
+    flex-direction: row-reverse;
+  }
+}
+
+  
+  

@@ -1,0 +1,64 @@
+.right-container {
+  margin: 5px 0px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.right-container .messageBox {
+  position: relative;
+  /* box-sizing: content-box; */
+  width: auto;
+  max-width: 40%;
+  height: auto;
+  border: 1px solid #DADADA;
+  background-color: #F6F2FF;
+  padding: 5px 24px 5px 5px;
+  border-radius: 10px 0px 10px 10px;
+  overflow-wrap: anywhere;
+  text-align:justify ;
+}
+
+.time {
+  position: absolute;
+  bottom: 0px;
+  z-index: 2;
+  right: 7px;
+  font-size: 10px;
+}
+
+.right-container .messageBox p {
+  margin: 0;
+}
+
+.senderArrowDown {
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  right: 0px;
+  display: none;
+}
+
+.messageBox:hover .senderArrowDown {
+  display: inline-block;
+  /* or any other display property you prefer*/
+}
+
+.senderArrowDown.show {
+  display: inline-block;
+}
+
+.text {
+  list-style: 1;
+  margin-right: 28px;
+  font-size: 16px
+}
+
+@media (max-width: 992px) {
+  .right-container .messageBox {
+    max-width: 70%;
+  }
+
+  .right-container {
+    z-index: -1;
+  }
+}

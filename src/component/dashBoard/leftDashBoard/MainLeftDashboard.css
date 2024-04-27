@@ -1,0 +1,69 @@
+#MainLeftDashboard {
+    flex: 70; /* 70% width */
+    margin-right: 5px; /* Padding between left and right */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    
+  }
+#MainLeftDeafaultDashboard {
+    flex: 70; /* 70% width */
+    margin-right: 5px; /* Padding between left and right */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+.message{
+  height: 78%;
+  overflow: auto;
+  margin: 5px 10px;
+}
+.message {
+  -ms-overflow-style: none !important;  /* Internet Explorer 10+ */
+  scrollbar-width: none !important;  /* Firefox */
+}
+.message::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+.darkMode-MainLeftDashBoardbackground{
+  background-color: #282828;
+}
+
+.noMessageContainer{
+  height: 100%;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultMessageContainer{
+  padding: 5%;
+  height: 100%;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    #MainLeftDashboard {
+      /* width: 100%; */
+      background-color: #fff;
+      /* position:; */
+      /* z-index: 0; */
+      /*display: none;  Hide the left component */
+    }
+    .defaultMessageContainer{
+      position: fixed;
+      z-index: -1;
+    }
+  
+    
+  }

@@ -1,0 +1,10 @@
+#logo {
+    width: 41.5%; /* Width percentage */
+    height: 47.6%; /* Height percentage */
+}
+.centeLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  

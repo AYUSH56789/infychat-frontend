@@ -1,0 +1,66 @@
+#userPhoto {
+    border-radius: 30px;
+    margin: 4px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    display: flex;
+}
+
+#userTab {
+    display: flex;
+    align-items: center;
+}
+
+#userDeatail {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+#userName {
+    margin: 0;
+    padding: 0;
+    color: #121212;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#lMessage {
+    margin: 0;
+    padding: 0;
+    color: #BA9FFB;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+#lTime {
+    margin-left: auto;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#hrUserStyle {
+    margin: 0px 5px;
+}
+.darkMode-RightDashBoardUserTabbackground{
+    color: #EEEAFF;
+    /* background-color: #282828; */
+}
+.darkMode-RightDashBoardUserNamecolor{
+    color: #EEEAFF !important;
+}
+
+@media (max-width: 992px) {
+    #userTab {
+      /* display: none; */
+      /* position: fixed; */
+      /* z-index: 100000; */
+      /* width: 100%; Take up full width */
+      /* margin-left: 0; Reset left margin */
+      /* margin-right: 0; Reset right margin */
+    }
+  }

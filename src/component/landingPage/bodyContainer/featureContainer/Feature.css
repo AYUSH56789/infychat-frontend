@@ -1,0 +1,169 @@
+.FeatureHeader{
+    color: rgb(39, 7, 7);
+    font-weight: 900;
+}
+
+.FeaturehalfUnderline {
+    position:relative;
+    border-bottom: 4px solid #BA9FFB;
+    border-image: linear-gradient(to right, #BA9FFB 40%, transparent 40%) 1;
+}
+.featureBody{
+display: flex;
+/* flex-wrap: wrap; */
+}
+
+#group-1{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom:5% ;
+}
+#group-2{
+margin-top:5% ;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.featureIcon{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    flex-direction: column;
+    position: relative;
+    padding: 0% 5%;
+    flex-grow: 1;
+}
+.featureImageStyle{
+    padding: 5%;
+    height: 50%;
+    width: 50%;
+}
+.botFeatureImageStyle{
+    width: 60%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.scheduling-feature{
+    border-radius:5px;
+    box-shadow: inset 1px 1px 2px 0px rgba(255, 254, 255, 0.2),
+        inset -1px -1px 2px 0px rgba(102, 102, 102, 0.5),
+        -1px 1px 2px 0 rgba(102, 102, 102, 0.2),
+        1px -1px 2px 0 rgba(102, 102, 102, 0.2),
+        -1px -1px 2px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 3px 0 rgba(102, 102, 102, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #F0EAEA; */
+    background-color: #ffff;
+    margin: 5%;
+    padding: 2% 0%;
+}
+.fileSharing-feature{
+    border-radius:5px;
+    box-shadow: inset 1px 1px 2px 0px rgba(255, 254, 255, 0.2),
+        inset -1px -1px 2px 0px rgba(102, 102, 102, 0.5),
+        -1px 1px 2px 0 rgba(102, 102, 102, 0.2),
+        1px -1px 2px 0 rgba(102, 102, 102, 0.2),
+        -1px -1px 2px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 3px 0 rgba(102, 102, 102, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #F0EAEA; */
+    background-color: #ffff;
+    margin: 5%;
+    padding: 2% 0%;
+}
+.security-feature{
+    border-radius:5px;
+    box-shadow: inset 1px 1px 2px 0px rgba(255, 254, 255, 0.2),
+        inset -1px -1px 2px 0px rgba(102, 102, 102, 0.5),
+        -1px 1px 2px 0 rgba(102, 102, 102, 0.2),
+        1px -1px 2px 0 rgba(102, 102, 102, 0.2),
+        -1px -1px 2px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 3px 0 rgba(102, 102, 102, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #F0EAEA; */
+    background-color: #ffff;
+    margin: 5%;
+    padding: 2% 0%;
+}
+.calling-feature{
+    border-radius:5px;
+    box-shadow: inset 1px 1px 2px 0px rgba(255, 254, 255, 0.2),
+        inset -1px -1px 2px 0px rgba(102, 102, 102, 0.5),
+        -1px 1px 2px 0 rgba(102, 102, 102, 0.2),
+        1px -1px 2px 0 rgba(102, 102, 102, 0.2),
+        -1px -1px 2px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 3px 0 rgba(102, 102, 102, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #F0EAEA; */
+    background-color: #ffff;
+    margin: 5%;
+    padding: 2% 0%;
+}
+.ai-feature{
+    border-radius:50px;
+    box-shadow: inset 1px 1px 2px 0px rgba(255, 254, 255, 0.2),
+        inset -1px -1px 2px 0px rgba(102, 102, 102, 0.5),
+        -1px 1px 2px 0 rgba(102, 102, 102, 0.2),
+        1px -1px 2px 0 rgba(102, 102, 102, 0.2),
+        -1px -1px 2px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 3px 0 rgba(102, 102, 102, 0.9);
+  position: absolute;
+  top: 34%;
+  left: 33%;
+  width: 33%;
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* z-index: 1; Ensure it's above other icons */
+    /* background-color: #F0EAEA; */
+    background-color: #ffff;
+    /* margin: 5%; */
+    /* padding: 2% 0%; */
+}
+
+.featureDiscription{
+    width: 50%;
+    margin: 5%;
+    text-align: justify;
+}
+
+ul {
+    list-style-type: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+  }
+  li {
+    padding-left: 20px; /* Add padding to make space for custom icon */
+    background: url('/icons/infy-check.png') no-repeat left center; /* Replace 'your-custom-icon.png' with your icon path */
+    background-size: 16px 16px; /* Adjust icon size as needed */
+    margin-bottom: 5px; /* Adjust margin as needed */
+  }
+
+@media (max-width: 992px) {
+    .FeatureHeader{
+        color: rgb(39, 7, 7);
+        font-weight: 600;
+    }
+    .featureBody{
+        flex-wrap: wrap-reverse;
+        }
+    .featureIcon{
+        width: 100%;
+    }
+    .featureDiscription{
+        width: 100%;
+    }
+}

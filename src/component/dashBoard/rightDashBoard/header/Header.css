@@ -1,0 +1,28 @@
+#rightHeader{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 50px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+}
+#userPhotoHeader{
+    border-radius: 30px;
+    margin: 4px;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+}
+#iconHeader{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 2px;
+}
+.darkMode-RightDashBoardHeaderbackground{
+    background-color: #282828;
+}
+.logoutOnfocus:hover{
+    background-color: "#ffffff" !important;
+    color: "#ba9ffb" !important;
+}

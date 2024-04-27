@@ -1,0 +1,81 @@
+.searchResult{
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.searchUserName{
+    margin-left: 5px;
+    font-size: 16px;
+}
+.searchUserImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+}
+.addButton{
+    margin-left: auto;
+    
+    
+}
+
+.addIconButton {
+    display: flex;
+    justify-content: center;
+    background-color: #ba9ffb;
+    color: #ffffff;
+    align-items: center;
+    border-radius: 20px;
+    padding: 4px;
+    margin: 4px;
+    border: none;
+    box-shadow: inset 1px 1px 2px 0px rgba(255, 254, 255, 0.3),
+      inset -1px -1px 2px 0px rgba(74, 64, 100, 0.5),
+      -1px 1px 2px 0 rgba(74, 64, 100, 0.2),
+      -1px 1px 2px 0 rgba(74, 64, 100, 0.2),
+      -1px -1px 2px 0 rgba(255, 254, 255, 0.9),
+      1px 1px 3px 0 rgba(74, 64, 100, 0.9);
+  
+  }
+.selectedUser{
+    display: flex;
+    align-items: center;
+    /* width: 30%; */
+    width: 90px;
+    margin: 10px 5px;
+    padding: 5px 11px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 20px;
+}
+.userName {
+    width: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 7px;
+  }
+  .arrayOfSelectedUser {
+    margin: 5px 3px 0px 3px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    flex-wrap: nowrap; /* Ensure items stay in a single row */
+  }
+  
+  .arrayOfSelectedUser::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+  }
+  
+
+.cutUser{
+    /*    position: absolute;*/
+    display: flex;
+    border: 1px solid grey;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding: 1px;
+    margin-left: auto;
+   }

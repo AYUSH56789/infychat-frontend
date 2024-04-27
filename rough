@@ -1,0 +1,154 @@
+import React, { useRef, useState } from 'react';
+import './Modal.css';
+import { useDispatch } from 'react-redux';
+import Button from '../formItem/Button';
+import Location from '../icon/Location';
+import DocFile from '../icon/DocFiile'; // DocFiile is correct[verified]
+import File from '../icon/File';
+import { RiCloseLine } from "react-icons/ri";
+import { setIsFileSelectorModelOpen } from '../../features/model/ModeSlice';
+import { toast } from 'react-toastify';
+
+export default function FileSelectorModel() {
+    const dispatch = useDispatch();
+    const refDoc = useRef();
+    const refAllFiles = useRef();
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFiles, setSelectedFiles] = useState([]);
+
+    const handleDocFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith('image/') && file.size <= 20 * 1024 * 1024) { // Check if file is an image and less than 20MB
+            setSelectedFile(file);
+        } else {
+            setSelectedFile(null);
+            toast.error('Please select a valid image file (less than 20MB)');
+        }
+    };
+
+    const handleAllFileChange = (event) => {
+        const files = event.target.files;
+        let totalSize = 0;
+
+        // Calculate the total size of all selected files
+        for (let i = 0; i < files.length; i++) {
+            totalSize += files[i].size;
+        }
+
+        // Check if the total size exceeds 50MB
+        if (totalSize > 50 * 1024 * 1024) {
+            toast.error('Total size of selected files exceeds 50MB');
+            return;
+        }
+
+        // Check if the number of selected files exceeds 5
+        if (files.length > 5) {
+            toast.error('Please select a maximum of 5 files');
+            return;
+        }
+
+        // Set selected files
+        setSelectedFiles(Array.from(files));
+    };
+
+    const handleCloseModal = () => {
+        dispatch(setIsFileSelectorModelOpen(false)); // Passing false to close the modal
+    };
+
+    const handleOnClickDocFileChoose = () => {
+        setSelectedFiles([])
+        refDoc.current.click();
+    };
+    const handleOnClickAllFileChoose = () => {
+        setSelectedFile(null)
+        refAllFiles.current.click();
+    };
+
+    const handleOnClickLocationChoose=()=>{
+        toast.warning("this feature is temprarily unavailable")
+    }
+
+    const handleOnFileSubmit=(event)=>{
+        event.preventDefault();
+        const files={
+            selectedFile:selectedFile || null,
+            selectedFiles:selectedFiles || null
+        }
+        console.log(files);
+    }
+
+    return (
+        <>
+            <div className="mydarkBG" onClick={handleCloseModal} /> {/* Call handleCloseModal */}
+            <div className="mycentered">
+                <div className="mymodal">
+                    <div className="mymodalHeader">
+                    <h1 className='text-center py-2 myheading'><span className='m-0 half-underline'>Select File</span></h1>
+                    </div>
+                    <button className="mycloseBtn" onClick={handleCloseModal}> {/* Call handleCloseModal */}
+                        <RiCloseLine style={{ marginBottom: "-3px" }} />
+                    </button>
+                    <div className="mymodalContent">
+                        {/* file type selector */}
+                        <div id="leftIconHeader" style={{ justifyContent: "center" }}>
+                            <div className='fileTypeIcon' onClick={handleOnClickDocFileChoose}>
+                                <DocFile size={"25"} color={"#ba9ffb"} style={{ color: "red" }} />
+                            </div>
+                            <div className='fileTypeIcon' onClick={handleOnClickAllFileChoose}>
+                                <File size={"23"} color={"#ba9ffb"} />
+                            </div>
+                            <div className='fileTypeIcon' onClick={handleOnClickLocationChoose}>
+                                <Location size={"25"} color={"#ba9ffb"} />
+                            </div>
+                        </div>
+
+                        <div>
+                            <input type="file" accept="image/*" ref={refDoc} onChange={handleDocFileChange} style={{ display: 'none' }} />
+                        </div>
+                        <div>
+                            <input type="file" multiple onChange={handleAllFileChange} ref={refAllFiles} style={{ display: 'none' }} />
+                        </div>
+                        
+                        {/* Select file preview */}
+                        <div className='filePM'>
+                            <hr id='hrUserStyle' />
+                            <div className="selectFilePreview">
+                                {selectedFile ? (
+                                    <div className='fileShowContainer'>
+                                        <img src={URL.createObjectURL(selectedFile)} alt="Selected" height={'60px'} width={'60px'} style={{borderRadius:'0px 13px'}}/>
+                                    </div>
+                                ) : selectedFiles.length>0?(
+                                    selectedFiles.map((file, index) => (
+                                        <div key={index}>
+                                            {file.type.startsWith('image/') ? (
+                                                <div className='fileShowContainer'>
+                                                    <img src={URL.createObjectURL(file)} alt="Selected" height={'60px'} width={'60px'} style={{borderRadius:'0px 13px'}} />
+                                                </div>
+                                            ) : (
+                                                <div className='fileShowContainer'>
+                                                    
+                                                    <img src="/images/fileIcon.jpg" alt="Selected" height={'60px'} width={'60px'} style={{borderRadius:'0px 13px'}}/>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))
+                                )
+                                :(
+                                    <p className='fileDefaultContent' style={{display:"flex",justifyContent:"center", width:"inherit"}}>No file selected</p>
+                                )}
+                            </div>
+                            <hr id='hrUserStyle' />
+                        </div>
+                        <div className="mymodalActions">
+                            {/* <InputText/> */}
+                            <div className="d-flex justify-content-center" onClick={handleOnFileSubmit}>
+                                <Button type="submit" value="Send File" bgColor="#ba9ffb" color="#ffff" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}

@@ -1,0 +1,125 @@
+// correct version [all correct]
+import React, { useCallback, useEffect, useState } from 'react'
+
+import './MainLeftDashboard.css'
+import DefaultLeft from './defaultLeft/DefaultLeft'
+import Header from './header/Header'
+import InputText from './inputText/InputText';
+import ReceiveChatBox from './receiverChatDialogBox/ReceiveChatBox';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getSocket } from '../../../utils/SocketIo';
+import SendChatBox from './senderChatDialogBox/SendChatBox';
+import { useSocketHandler } from '../../../utils/Hooks';
+import { getChatMessage, getMoreChatMessage, setTempMessage } from '../../../features/message/MessageSlice';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { getChatDetailsApi } from '../../../features/details/DetailSlice';
+
+export default function MainLeftDashboard() {
+  const [page, setPage] = useState(1)
+  const dispatch = useDispatch()
+  const [message, setMessage] = useState('');
+  // const [tempMessage, setTempMessage] = useState([]);
+  const socket = getSocket()
+  const { data } = useSelector(state => state.login)
+  const mode = useSelector(state => state.theme)
+  const { chatData } = useSelector(state => state.details);
+  const { isLoading, tempMessage, allChatMessage, chatHeaderName, chatHeaderPhoto, showChatContainer } = useSelector(state => state.chatMessage);
+  console.log("message:", tempMessage);
+
+  useEffect(() => {
+    setPage(1)
+  }, [chatData])
+
+  const handleSendMessage = (event) => {
+    event.preventDefault()
+    // if not message|| empty space return 
+    if (!message.trim()) return;
+
+    // deal with socket
+    socket.emit('NEW_MESSAGE', { chatId: chatData._id, members: chatData.members, message })
+    // console.log(message,"msgayush")
+    setMessage("")
+  }
+  const newMesgHandler = useCallback((msgData) => {
+    console.log("Data from socket:", msgData);
+    dispatch(setTempMessage(msgData))
+  }, []);
+
+  // console.log("cd", chatData._id)
+  const eventHandlers = { 'NEW_MESSAGE': newMesgHandler }
+  useSocketHandler(socket, eventHandlers)
+
+  // Reverse the allChatMessage array
+  const reversedAllChatMessage = allChatMessage && allChatMessage.chatMessages ? [...allChatMessage.chatMessages].reverse() : [];
+
+  const fetchMoreData = async () => {
+    console.log("fetch call");
+    setPage(page + 1);
+    const resp = await dispatch(getMoreChatMessage({ chatId: chatData._id, page: page + 1 }));
+    console.log(resp, "resp");
+  }
+
+  const handleOnChangeText=(event)=>{
+    event.preventDefault();
+    setMessage(event.target.value);
+  }
+  return (
+    <div id="MainLeftDashboard" className={mode.dark ? "darkMode-MainLeftDashBoardbackground" : ""} >
+      {showChatContainer === false ? (
+        <div className='defaultMessageContainer'>
+          <DefaultLeft />
+        </div>
+      ) : (
+        <>
+          <Header name={chatHeaderName} photo={chatHeaderPhoto} />
+          <div className='message' id="scrollableDiv"
+            style={{
+              // height: 300,
+              overflow: 'auto',
+              display: 'flex',
+              flexDirection: 'column-reverse',
+              // '-ms-overflow-style': 'none',
+              // 'scrollbar-width': 'none',
+            }}>
+
+            {allChatMessage && <InfiniteScroll
+              dataLength={allChatMessage.chatMessages.length}
+              next={fetchMoreData}
+              style={{ display: 'flex', flexDirection: 'column-reverse' }} //To put endMessage and loader to the top.
+              inverse={true} //
+              hasMore={allChatMessage.chatMessages.length < allChatMessage.totoalMessageCount}
+              loader={<h4>Loading...</h4>}
+              scrollableTarget="scrollableDiv"
+            >
+              {tempMessage.length === 0 && chatData ? (
+                console.log("ayuhs its work")
+              ) : (
+                tempMessage.map((msg, index) => (
+                  msg.message.sender._id === data.userId ?
+                    <SendChatBox key={index} msgContent={msg.message.messageContent}  /> :
+                    <ReceiveChatBox key={index} msgContent={msg.message.messageContent} photo={msg.message.sender.photo} />
+                ))
+              )}
+
+              {allChatMessage.chatMessages.length === 0 ? (
+                <div className='noMessageContainer'>
+                  <img src="/images/noMessage.svg" height={"80%"} width={"80%"} alt="" />
+                </div>
+              ) : (
+                allChatMessage.chatMessages.map((msg, index) => (
+                  msg.sender._id == data.userId ?
+                    <SendChatBox key={index} msgContent={msg.messageContent}  /> :
+                    <ReceiveChatBox key={index} msgContent={msg.messageContent} photo={msg.sender.photo.url} />
+
+                ))
+              )}
+            </InfiniteScroll>}
+          </div>
+          {/* error */}
+          <InputText message={message} setMessage={setMessage} handleSendMessage={handleSendMessage} handleOnChangeText={handleOnChangeText}/>
+        </>
+      )}
+    </div>
+  )
+}

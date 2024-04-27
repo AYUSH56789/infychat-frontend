@@ -1,0 +1,84 @@
+#inputText{
+    /* position:absolute ; */
+    /* bottom: 0; */
+    /* left: 0; */
+    /* width: 64%; */
+    /* width: calc(((100% - 32vw))); */
+    border-radius: 5px;
+    border: 2px solid #DADADA;
+    display: flex;
+    align-items: center;
+    padding:25px 5px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 8%;
+}
+#hrInputText {
+    height: 35px; /* Adjust the height as needed */
+    border-left: 2px solid black; /* Adjust the border style as needed */
+    margin: 0 10px; 
+}
+/* Apply styles to the specific input element with ID searchInput */
+#chatInput[type="text"] {
+        border: none;
+        outline: none;
+        background: none;
+        padding: 3px 10px;
+        margin: 0;
+        font-size: 16px;
+        font-weight: 100;
+        color: #000000;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        width: 100%;
+        overflow:scroll;
+white-space: nowrap;
+/* overflow:hidden; */
+text-overflow:ellipsis;
+        letter-spacing: 0.5px;
+        overflow-wrap: break-word !important;
+    /* } */
+}
+
+.darkMode-searchInputText[type="text"] {
+color: #EEEAFF !important;
+}
+/* Change the color to your desired placeholder color */
+#searchInput[type="text"]::placeholder {
+    color: #D8C8FF;
+}
+
+/* Remove clear button for WebKit browsers */
+#searchInput[type="text"]::-webkit-search-cancel-button {
+    display: none;
+}
+
+/* Remove clear button for Internet Explorer */
+#searchInput[type="text"]::-ms-clear {
+    display: none;
+}
+#outerContainerPicker{
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    /* z-index: 1; all crrect until msgscheduling model */
+    z-index: 2; /*after msgscheduling model*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+  }
+  .emojiContainer{
+    position: fixed;
+    /* z-index: 5; */
+    top: 60%;
+    left: 50%;
+    transform: translate(-152%, -50%);
+  }
+  em-emoji-picker {
+    height: 100px;
+    /* position: relative; */
+}
